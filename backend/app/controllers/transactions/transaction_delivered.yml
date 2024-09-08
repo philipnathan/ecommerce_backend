@@ -1,0 +1,52 @@
+tags:
+    - Transactions
+summary: Confirm that the shipment has been delivered (for user)
+description: Confirm that the shipment has been delivered (for user)
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: path
+      name: transaction_id
+      required: true
+      schema:
+          type: tring
+          example: TRX20240816FC35C65A
+responses:
+    200:
+        description: Transactioon and shipment detail updated to delivered successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Transaction changed to delivered successfully
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Shipment detail not found
+    401:
+        description: Unauthorized
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Unauthorized
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

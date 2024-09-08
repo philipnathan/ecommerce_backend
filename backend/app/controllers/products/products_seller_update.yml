@@ -1,0 +1,90 @@
+tags:
+    - Products
+summary: Update a seller's product
+description: Update a seller's product
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: path
+      name: product_id
+      required: true
+      schema:
+          type: integer
+          example: 1
+      description: ID
+    - name: request
+      in: body
+      required: false
+      schema:
+          type: object
+          properties:
+              name:
+                  type: string
+                  example: "name"
+              description:
+                  type: string
+                  example: "description"
+              image_base64:
+                  type: array
+                  items:
+                      type: string
+                      example: "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDw8QDw8QEBAQEBAPFRAPDxUPDxUVFRUWFhYVFR..."
+              price:
+                  type: integer
+                  example: 100
+              stock:
+                  type: integer
+                  example: 10
+              category_id:
+                  type: integer
+                  example: 1
+              weight_kg:
+                  type: float
+                  example: 0.5
+              length_cm:
+                  type: integer
+                  example: 10
+              width_cm:
+                  type: integer
+                  example: 10
+              height_cm:
+                  type: integer
+                  example: 10
+              product_type:
+                  type: integer
+                  enum: [1, 2]
+                  example: 0
+responses:
+    200:
+        description: Product updated successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Product created successfully\
+                key_updated:
+                    type: array
+                    example: ["name", "description"]
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Unauthorized
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

@@ -1,0 +1,57 @@
+tags:
+    - Products
+summary: Delete images of products
+description: Delete images of products
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - name: image_id
+      in: path
+      required: true
+      schema:
+          type: integer
+          example: 1
+      description: ID
+    - name: request
+      in: body
+      required: true
+      schema:
+          type: object
+          properties:
+              product_id:
+                  type: integer
+                  example: 1
+              image_public_id:
+                  type: string
+                  example: iyronmbpu5k0qxm
+responses:
+    200:
+        description: Image of product deleted successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Image deleted successfully
+    400:
+        description: Unsufficient data
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Please provide product_id and image_public_id
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

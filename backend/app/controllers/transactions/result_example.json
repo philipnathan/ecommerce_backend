@@ -1,0 +1,99 @@
+{
+    "3": {
+        "etd": "1-1",
+        "final_price": 2016100,
+        "items": [
+            {
+                "detail_product": {
+                    "category_id": 1,
+                    "id": 17,
+                    "image_url": "www.google.com",
+                    "is_active": 1,
+                    "name": "Sepeda",
+                    "price": 1000000,
+                    "product_type": 1,
+                    "seller_id": 3,
+                    "seller_info": {
+                        "store_immage_url": null,
+                        "store_name": "Nathan shop!"
+                    },
+                    "volume_m3": "0.0010000000",
+                    "weight_kg": "0.5000000000"
+                },
+                "quantity": 2,
+                "sub_total": 2000000,
+                "sub_volume": "0.0020000000",
+                "sub_volume_to_weight": "0.2000000000",
+                "sub_weight": "1.0000000000"
+            },
+            {
+                "detail_product": {
+                    "category_id": 1,
+                    "id": 18,
+                    "image_url": "www.google.com",
+                    "is_active": 1,
+                    "name": "name",
+                    "price": 100,
+                    "product_type": 1,
+                    "seller_id": 3,
+                    "seller_info": {
+                        "store_immage_url": null,
+                        "store_name": "Nathan shop!"
+                    },
+                    "volume_m3": "0.0010000000",
+                    "weight_kg": "0.5000000000"
+                },
+                "quantity": 1,
+                "sub_total": 100,
+                "sub_volume": "0.0010000000",
+                "sub_volume_to_weight": "0.2000000000",
+                "sub_weight": "0.5000000000"
+            }
+        ],
+        "seller_address_id": 13,
+        "service": "CTCYES",
+        "shipment_fee": 24000,
+        "total_discount": 8000,
+        "total_price_before_shipment": 2000100,
+        "total_weight_gram": "1500.0000000000",
+        "user_seller_voucher_id": 16,
+        "vendor_name": "jne"
+    },
+    "4": {
+        "etd": "3",
+        "final_price": 3205000,
+        "items": [
+            {
+                "detail_product": {
+                    "category_id": 1,
+                    "id": 22,
+                    "image_url": "www.google.com",
+                    "is_active": 1,
+                    "name": "Sepeda",
+                    "price": 1000000,
+                    "product_type": 1,
+                    "seller_id": 4,
+                    "seller_info": {
+                        "store_immage_url": null,
+                        "store_name": "Nathan shop"
+                    },
+                    "volume_m3": "0.0010000000",
+                    "weight_kg": "0.5000000000"
+                },
+                "quantity": 3,
+                "sub_total": 3000000,
+                "sub_volume": "0.0030000000",
+                "sub_volume_to_weight": "0.2000000000",
+                "sub_weight": "1.5000000000"
+            }
+        ],
+        "seller_address_id": 14,
+        "service": "REG",
+        "shipment_fee": 210000,
+        "total_discount": 5000,
+        "total_price_before_shipment": 3000000,
+        "total_weight_gram": "3000.0000000000",
+        "user_seller_voucher_id": 8,
+        "vendor_name": "tiki"
+    }
+}

@@ -1,0 +1,45 @@
+tags:
+    - Products
+summary: Delete a seller's product
+description: Delete a seller's product
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: path
+      name: product_id
+      required: true
+      schema:
+          type: integer
+          example: 1
+      description: ID
+responses:
+    200:
+        description: Product deleted successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Product deleted successfully
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Unauthorized
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

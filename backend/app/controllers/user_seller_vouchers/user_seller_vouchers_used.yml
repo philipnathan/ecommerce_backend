@@ -1,0 +1,45 @@
+tags:
+    - User Seller Vouchers
+summary: Used voucher
+description: Used voucher
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: path
+      name: user_seller_voucher_id
+      required: true
+      schema:
+          type: integer
+          example: 1
+      description: ID
+responses:
+    201:
+        description: Voucher used successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Voucher used successfully
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Unauthorized
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

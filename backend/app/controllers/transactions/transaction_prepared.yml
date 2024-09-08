@@ -1,0 +1,44 @@
+tags:
+    - Transactions
+summary: Change status to prepared (for seller)
+description: Change status to prepared (for seller)
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: path
+      name: transaction_id
+      required: true
+      schema:
+          type: tring
+          example: TRX20240816FC35C65A
+responses:
+    200:
+        description: Successfully change transaction status to prepared
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Transaction changed to prepared successfully
+    401:
+        description: Unauthorized
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Unauthorized
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

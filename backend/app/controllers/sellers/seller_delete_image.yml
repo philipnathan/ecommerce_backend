@@ -1,0 +1,38 @@
+tags:
+    - Sellers
+summary: Delete seller's image
+description: Delete seller's image
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+responses:
+    200:
+        description: Image of seller deleted successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Image deleted successfully
+    400:
+        description: Seller does not have an image
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Seller does not have an image
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

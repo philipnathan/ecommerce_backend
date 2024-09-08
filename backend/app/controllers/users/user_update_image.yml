@@ -1,0 +1,48 @@
+tags:
+    - Users
+summary: Update/add user's image
+description: Update/add user's image
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: body
+      name: request
+      schema:
+          type: object
+          properties:
+              image_base64:
+                  type: array
+                  items:
+                      type: string
+                      example: "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDw8QDw8QEBAQEBAPFRAPDxUPDxUVFRUWFhYVFR..."
+responses:
+    200:
+        description: Image of user deleted successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Image deleted successfully
+    400:
+        description: User does not have image
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: User does not have image
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

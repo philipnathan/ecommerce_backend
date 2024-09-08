@@ -1,0 +1,72 @@
+tags:
+    - Transactions
+summary: Create a review for every product in transaction (for user)
+description: Create a review for every product in transaction (for user)
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: path
+      name: transaction_id
+      required: true
+      schema:
+          type: tring
+          example: TRX20240816FC35C65A
+    - in: body
+      name: request
+      required: true
+      schema:
+          type: object
+          properties:
+              reviews:
+                  type: array
+                  items:
+                      type: object
+                      properties:
+                          product_id:
+                              type: integer
+                              example: 1
+                          rating:
+                              type: integer
+                              example: 5
+                          review:
+                              type: string
+                              example: "barangnya bagus"
+responses:
+    201:
+        description: Review created successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Review created successfully
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Transaction not found
+    401:
+        description: Unauthorized
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Unauthorized
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

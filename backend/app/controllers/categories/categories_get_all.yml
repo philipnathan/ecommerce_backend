@@ -1,0 +1,26 @@
+tags:
+    - Categories
+summary: Get all available categories
+description: Get all available categories
+responses:
+    200:
+        description: Successfully get user information.
+        schema:
+            type: array
+            items:
+                type: object
+                properties:
+                    id:
+                        type: integer
+                        example: 1
+                    category_name:
+                        type: string
+                        example: Fashion
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

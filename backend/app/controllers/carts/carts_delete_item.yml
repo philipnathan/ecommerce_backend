@@ -1,0 +1,38 @@
+tags:
+    - Carts
+summary: Delete user's item cart
+description: Delete user's item cart
+parameters:
+    - in: header
+      name: Authorization
+      required: true
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+    - in: path
+      name: product_id
+      required: true
+      schema:
+          type: integer
+          example: 1
+      description: ID
+responses:
+    200:
+        description: Successfully get cart
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Cart item deleted successfully
+    401:
+        description: Unauthorized
+    500:
+        description: Internal Server Error
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string

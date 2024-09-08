@@ -1,0 +1,68 @@
+tags:
+    - Address
+summary: Add new address for seller or user
+description: Add new address for seller or user
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - name: request
+      in: body
+      required: true
+      schema:
+          type: object
+          properties:
+              receiver_name:
+                  type: string
+                  example: receiver_name
+              phone_number:
+                  type: string
+                  example: "6282122223333"
+              address_type:
+                  type: string
+                  example: "home"
+              address_line:
+                  type: string
+                  example: "Jl. Denpasar"
+              province_id:
+                  type: integer
+                  example: 1
+              district_id:
+                  type: integer
+                  example: 114
+              postal_code:
+                  type: string
+                  example: "16151"
+              rt_rw:
+                  type: string
+                  example: "001/001"
+responses:
+    200:
+        description: Address added successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Address added successfully
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Address not found.
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

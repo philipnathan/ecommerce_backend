@@ -1,0 +1,94 @@
+tags:
+    - Transactions
+summary: Create transaction based on user's cart
+description: Create transaction based on user's cart
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - name: request
+      in: body
+      required: true
+      schema:
+          type: object
+          properties:
+              carts:
+                  type: array
+                  items:
+                      type: object
+                      properties:
+                          product_id:
+                              type: integer
+                              example: 1
+                          quantity:
+                              type: integer
+                              example: 1
+                      type: object
+                      properties:
+                          product_id:
+                              type: integer
+                              example: 2
+                          quantity:
+                              type: integer
+                              example: 2
+              selected_user_voucher_ids:
+                  type: array
+                  items:
+                      type: integer
+                      example: [1, 2, 3]
+              user_selected_address_id:
+                  type: integer
+                  example: 1
+              selected_courier:
+                  type: array
+                  items:
+                      type: object
+                      properties:
+                          seller_id:
+                              type: integer
+                              example: 1
+                          selected_courier:
+                              type: string
+                              example: "jne"
+                          selected_service:
+                              type: string
+                              example: "REG"
+responses:
+    200:
+        description: Successfully create transaction and return payment link
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Transaction created successfully
+                payment_data:
+                    type: object
+                    properties:
+                        redirect_url:
+                            type: string
+                            example: "https://app.sandbox.midtrans.com/snap"
+                        token:
+                            type: string
+                            example: "bc6b4cd5-41f3-4b00"
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Unauthorized
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

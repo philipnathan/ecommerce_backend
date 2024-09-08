@@ -1,0 +1,44 @@
+tags:
+    - Transactions
+summary: Cancel a transaction for user and seller
+description: Cancel a transaction for user and seller
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: path
+      name: transaction_id
+      required: true
+      schema:
+          type: tring
+          example: TRX20240816FC35C65A
+responses:
+    200:
+        description: Successfully cancel transaction
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Transaction canceled successfully
+    400:
+        description: Failed to cancel the transaction
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Items on delivery. Transaction can't be canceled
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

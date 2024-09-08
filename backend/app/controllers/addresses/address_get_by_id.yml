@@ -1,0 +1,79 @@
+tags:
+    - Address
+summary: Get existed address by id for seller or user
+description: Get existed address by id for seller or user
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: path
+      name: address_id
+      required: true
+      schema:
+          type: integer
+          example: 1
+      description: ID
+responses:
+    200:
+        description: Address returned successfully
+        schema:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    example: 1
+                receiver_name:
+                    type: string
+                    example: "receiver_name"
+                phone_number:
+                    type: string
+                    example: "6282122223333"
+                address_type:
+                    type: string
+                    example: "home"
+                address_line:
+                    type: string
+                    example: "Jl. Denpasar"
+                province_id:
+                    type: integer
+                    example: 1
+                province_name:
+                    type: string
+                    example: "Bali"
+                district_id:
+                    type: integer
+                    example: 1
+                district_name:
+                    type: string
+                    example: "Denpasar"
+                rt_rw:
+                    type: string
+                    example: "001/001"
+                postal_code:
+                    type: string
+                    example: "12345"
+                is_active:
+                    type: integer
+                    example: 1
+
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Address not Found.
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

@@ -1,0 +1,68 @@
+{
+    "jne": [
+        {
+            "cost": 9000,
+            "description": "JNE City Courier",
+            "etd": "1-2",
+            "service": "CTC"
+        },
+        {
+            "cost": 40000,
+            "description": "JNE Trucking",
+            "etd": "3-4",
+            "service": "JTR"
+        },
+        {
+            "cost": 12000,
+            "description": "JNE City Courier",
+            "etd": "1-1",
+            "service": "CTCYES"
+        }
+    ],
+    "pos": [
+        {
+            "cost": 8000,
+            "description": "Pos Reguler",
+            "etd": "2 HARI",
+            "service": "Pos Reguler"
+        },
+        {
+            "cost": 12000,
+            "description": "Pos Sameday",
+            "etd": "0 HARI",
+            "service": "Pos Sameday"
+        },
+        {
+            "cost": 9000,
+            "description": "Pos Nextday",
+            "etd": "1 HARI",
+            "service": "Pos Nextday"
+        },
+        {
+            "cost": 30000,
+            "description": "Pos Kargo",
+            "etd": "7-14 HARI",
+            "service": "Pos Kargo"
+        }
+    ],
+    "tiki": [
+        {
+            "cost": 9000,
+            "description": "Over Night Service",
+            "etd": "1",
+            "service": "ONS"
+        },
+        {
+            "cost": 7000,
+            "description": "Reguler Service",
+            "etd": "3",
+            "service": "REG"
+        },
+        {
+            "cost": 6000,
+            "description": "Economy Service",
+            "etd": "5",
+            "service": "ECO"
+        }
+    ]
+}

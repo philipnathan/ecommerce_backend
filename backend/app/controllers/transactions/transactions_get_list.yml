@@ -1,0 +1,141 @@
+tags:
+    - Transactions
+summary: Get all transactions or specific transaction by id
+description: Get all transactions or specific transaction by id
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: query
+      name: tx
+      schema:
+          type: string
+          example: TRX20240813215ED09B
+      description: ID of specific transaction
+      required: false
+    - in: query
+      name: page
+      schema:
+          type: integer
+          example: 1
+      description: Page number
+      required: false
+    - in: query
+      name: per_page
+      schema:
+          type: integer
+          example: 10
+      description: Items per page
+      required: false
+    - in: query
+      name: date
+      schema:
+          type: string
+          enum: ["latest", "newest"]
+          example: "latest / newest"
+      description: Order date
+      required: false
+    - in: query
+      name: status
+      schema:
+          type: integer
+          example: 1
+      description: Transaction status
+      required: false
+responses:
+    200:
+        description: Successfully create transaction and return payment link
+        schema:
+            type: array
+            items:
+                type: object
+                properties:
+                    created_at:
+                        type: string
+                        example: "Tue, 13 Aug 2024 06:29:36 GMT"
+                    id:
+                        type: string
+                        example: "TRX20240813215ED09B"
+                    payment_link:
+                        type: string
+                        example: "https://app.sandbox.midtrans.com/snap"
+                    products:
+                        type: array
+                        items:
+                            type: object
+                            properties:
+                                product_id:
+                                    type: string
+                                    example: "1"
+                                product_info:
+                                    type: object
+                                    properties:
+                                        name:
+                                            type: string
+                                            example: "Product 1"
+                                        price:
+                                            type: number
+                                            example: 10000
+                                        image_url:
+                                            type: string
+                                            example: "www.google.com"
+                                        is_active:
+                                            type: number
+                                            example: 1
+                                product_order_id:
+                                    tpye: integer
+                                    example: 1
+                                quantity:
+                                    type: integer
+                                    example: 1
+                    seller_id:
+                        type: string
+                        example: "1"
+                    seller_info:
+                        type: object
+                        properties:
+                            store_name:
+                                type: string
+                                example: "Seller 1"
+                            store_image_url:
+                                type: string
+                                example: "www.google.com"
+                    total_discount:
+                        type: integer
+                        example: 10000
+                    transaction_status:
+                        type: integer
+                        example: 1
+                    transaction_status_name:
+                        type: string
+                        example: "WAITING_FOR_PAYMENT"
+                    updated_at:
+                        type: string
+                        example: "Tue, 13 Aug 2024 06:29:36 GMT"
+                    user_id:
+                        type: integer
+                        example: 1
+                    user_seller_voucher_id:
+                        type: integer
+                        example: 1
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Unauthorized
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

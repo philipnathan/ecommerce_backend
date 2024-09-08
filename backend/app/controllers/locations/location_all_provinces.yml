@@ -1,0 +1,25 @@
+tags:
+    - Locations
+summary: Get all provinces
+description: Get all provinces
+responses:
+    200:
+        description: Successfully get provinces
+        schema:
+            type: array
+            items:
+                type: object
+                properties:
+                    id:
+                        type: integer
+                    district_id:
+                        type: integer
+                    subdistrict:
+                        type: string
+    500:
+        description: Internal Server Error
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string

@@ -1,0 +1,35 @@
+tags:
+    - Shipments
+summary: Get list of shipments
+description: Get list of shipments
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+responses:
+    200:
+        description: Successfully return available shipments
+        schema:
+            type: array
+            items:
+                tpye: object
+                properties:
+                    id:
+                        type: integer
+                        example: 1
+                    vendor_name:
+                        type: string
+                        example: jne
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

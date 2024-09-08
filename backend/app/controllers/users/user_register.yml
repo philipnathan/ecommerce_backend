@@ -1,0 +1,52 @@
+tags:
+    - Users
+summary: Create User
+description: Create new user.
+parameters:
+    - name: request
+      in: body
+      required: true
+      schema:
+          type: object
+          properties:
+              username:
+                  type: string
+                  example: username
+              fullname:
+                  type: string
+                  example: fullname
+              email:
+                  type: string
+                  format: email
+                  example: email
+              phone_number:
+                  type: string
+                  example: 6282122223333
+              password:
+                  type: string
+                  example: password
+responses:
+    200:
+        description: Successfully Registered
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: User created successfully.
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Email already exists.
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

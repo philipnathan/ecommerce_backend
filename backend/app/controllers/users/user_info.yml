@@ -1,0 +1,44 @@
+tags:
+    - Users
+summary: Get current user information.
+description: Get current user information.
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+responses:
+    200:
+        description: Successfully get user information.
+        schema:
+            type: object
+            properties:
+                user:
+                    type: object
+                    properties:
+                        username:
+                            type: string
+                            example: usernameofuser
+                        fullname:
+                            type: string
+                            example: fullnameofuser
+                        email:
+                            type: string
+                            example: useremail@gmail.com
+                        phone_number:
+                            type: string
+                            example: 6282122223333
+    401:
+        description: UNAUTHORIZED
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

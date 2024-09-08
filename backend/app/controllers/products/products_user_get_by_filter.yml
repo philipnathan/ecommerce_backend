@@ -1,0 +1,187 @@
+tags:
+    - Products User
+summary: Get list of Products by filter
+description: Get list of Products filter
+parameters:
+    - name: rating
+      in: query
+      required: false
+      schema:
+          type: string
+          enum: ["desc", "asc"]
+          example: "desc / asc"
+    - name: price
+      in: query
+      required: false
+      schema:
+          type: string
+          enum: ["desc", "asc"]
+          example: "desc / asc"
+    - name: date
+      in: query
+      required: false
+      schema:
+          type: string
+          enum: ["newest", "latest"]
+          example: "newest / latest"
+    - name: page
+      in: query
+      required: false
+      schema:
+          type: integer
+          example: 1
+      description: Page number
+    - name: per_page
+      in: query
+      required: false
+      schema:
+          type: integer
+          example: 10
+      description: Per page
+    - name: category
+      in: query
+      required: false
+      schema:
+          type: integer
+          example: 1
+      description: Category ID
+    - name: province_id
+      in: query
+      required: false
+      schema:
+          type: integer
+          example: 1
+      description: Province ID
+    - name: district_id
+      in: query
+      required: false
+      schema:
+          type: integer
+          example: 1
+      description: District ID
+    - name: seller_id
+      in: query
+      required: false
+      schema:
+          type: integer
+          example: 1
+      description: Seller ID
+responses:
+    200:
+        description: Returns list of products
+        schema:
+            type: object
+            properties:
+                products:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            id:
+                                type: integer
+                                example: 1
+                            name:
+                                type: string
+                                example: "name"
+                            description:
+                                type: string
+                                example: "description"
+                            price:
+                                type: integer
+                                example: 100
+                            weight_kg:
+                                type: float
+                                example: 0.5
+                            volume_m3:
+                                type: float
+                                example: 0.5
+                            stock:
+                                type: integer
+                                example: 10
+                            image_url:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        id:
+                                            type: integer
+                                            example: 1
+                                        image_public_id:
+                                            tpye: string
+                                            example: nhaeqygbugb2
+                                        image_secure_url:
+                                            type: string
+                                            example: https://res.cloudinary.com/gfp-gro
+                                        product_id:
+                                            type: integer
+                                            example: 1
+                            product_type:
+                                type: integer
+                                example: 1
+                            category_id:
+                                type: integer
+                                example: 1
+                            is_active:
+                                type: integer
+                                example: 0
+                            sold_qty:
+                                type: integer
+                                example: 5
+                            reviews:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        id:
+                                            type: integer
+                                            example: 1
+                                        product_id:
+                                            type: integer
+                                            example: 1
+                                        seller_id:
+                                            type: integer
+                                            example: 1
+                                        user_id:
+                                            type: integer
+                                            example: 1
+                                        rating:
+                                            type: float
+                                            example: 4.5
+                                        review:
+                                            type: string
+                                            example: "review"
+                            avg_rating:
+                                type: float
+                                example: 4.5
+                            seller_id:
+                                type: integer
+                                example: 1
+                            created_at:
+                                type: string
+                                format: datetime
+                                example: "2021-01-01 00:00:00"
+                total_page:
+                    type: integer
+                    example: 1
+                current_page:
+                    type: integer
+                    example: 1
+                total_items:
+                    type: integer
+                    example: 1
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Product not found / Invalid Category ID
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

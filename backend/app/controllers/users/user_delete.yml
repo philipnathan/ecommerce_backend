@@ -1,0 +1,33 @@
+tags:
+    - Users
+summary: Delete current user.
+description: Delete current user.
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+      description: JWT Token
+    - name: request
+      in: body
+      required: true
+      schema:
+          type: object
+          properties:
+              password:
+                  type: string
+                  format: password
+responses:
+    200:
+        description: User deleted successfully.
+    401:
+        description: UNAUTHORIZED
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

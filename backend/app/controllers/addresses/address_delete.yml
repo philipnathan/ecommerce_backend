@@ -1,0 +1,45 @@
+tags:
+    - Address
+summary: Delete existed address for seller or user
+description: Delete existed address for seller or user
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: path
+      name: address_id
+      required: true
+      schema:
+          type: integer
+          example: 1
+      description: ID
+responses:
+    200:
+        description: Address deleted successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Address deleted successfully
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Address not Found.
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

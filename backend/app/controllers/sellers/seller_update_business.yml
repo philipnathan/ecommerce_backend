@@ -1,0 +1,61 @@
+tags:
+    - Sellers
+summary: Update sellers business information.
+description: Allows sellers to update their business information detail.
+
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+    - name: request
+      in: body
+      required: true
+      schema:
+          type: object
+          properties:
+              store_name:
+                  type: string
+                  example: Nathan shop
+              store_description:
+                  type: string
+                  example: Jual bahan pangan
+              store_image_url:
+                  type: array
+                  items:
+                      type: string
+                      example: "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDw8QDw8QEBAQEBAPFRAPDxUPDxUVFRUWFhYVFR..."
+responses:
+    200:
+        description: Store updated successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Seller business information updated successfully
+                key_updated:
+                    type: array
+                    example:
+                        ["store_name", "store_description", "store_image_url"]
+    400:
+        description: Incorrect user input
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Incorrect Password
+    401:
+        description: UNAUTHORIZED
+    500:
+        description: Something wrong with the database
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database

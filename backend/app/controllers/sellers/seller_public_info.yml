@@ -1,0 +1,74 @@
+tags:
+    - Sellers
+summary: Get seller public information.
+description: Get seller public information.
+parameters:
+    - in: path
+      name: seller_id
+      required: true
+      schema:
+          type: integer
+          example: 1
+responses:
+    200:
+        description: Successfully get user information.
+        schema:
+            type: object
+            properties:
+                seller:
+                    type: object
+                    properties:
+                        addresses:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    id:
+                                        type: integer
+                                        example: 1
+                                    district_id:
+                                        type: integer
+                                        example: 1
+                                    district_name:
+                                        type: string
+                                        example: Denpasar
+                                    is_active:
+                                        type: integer
+                                        example: 1
+                                    postal_code:
+                                        type: string
+                                        example: 80123
+                                    province_id:
+                                        type: integer
+                                        example: 1
+                                    province_name:
+                                        type: string
+                                        example: Bali
+                        id:
+                            type: integer
+                            example: 1
+                        store_desctiption:
+                            type: string
+                            example: "store_desctiption"
+                        store_name:
+                            type: string
+                            example: "store_name"
+                        store_image_url:
+                            type: string
+                            example: "store_image_url"
+    400:
+        description: Incorrect user input
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Seller not found
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

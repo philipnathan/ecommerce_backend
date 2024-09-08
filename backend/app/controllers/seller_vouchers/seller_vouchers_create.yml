@@ -1,0 +1,75 @@
+tags:
+    - Seller Vouchers
+summary: Create Vouchers
+description: Create Vouchers
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - name: request
+      in: body
+      required: true
+      schema:
+          type: object
+          properties:
+              title:
+                  type: string
+                  example: voucher title
+              discount_type:
+                  type: integer
+                  enum: [1, 2]
+                  description: |
+                      1 = PERCENTAGE
+                      2 = FIXED_DISCOUNT
+                  example: 1
+              percentage:
+                  type: integer
+                  example: 10
+              min_purchase_amount:
+                  type: integer
+                  example: 10000
+              max_discount_amount:
+                  type: integer
+                  example: 10000
+              usage_limit:
+                  type: integer
+                  example: 1
+              start_date:
+                  type: string
+                  example: "2022-01-01 00:00:00"
+              expiry_date:
+                  type: string
+                  example: "2022-01-01 00:00:00"
+              timezone:
+                  type: string
+                  example: Asia/Jakarta
+responses:
+    201:
+        description: Voucher created successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Voucher created successfully
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Unauthorized
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

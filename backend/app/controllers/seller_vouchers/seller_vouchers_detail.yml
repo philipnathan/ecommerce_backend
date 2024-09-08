@@ -1,0 +1,86 @@
+tags:
+    - Seller Vouchers
+summary: Get list of vouchers
+description: Get list of vouchers
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: path
+      name: voucher_id
+      required: true
+      schema:
+          type: integer
+          example: 1
+      description: ID
+responses:
+    200:
+        description: Returns detail of a voucher
+        schema:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    example: 1
+                title:
+                    type: string
+                    example: voucher title
+                discount_type:
+                    type: integer
+                    enum: [1, 2]
+                    description: |
+                        1 = PERCENTAGE
+                        2 = FIXED_DISCOUNT
+                    example: 1
+                percentage:
+                    type: integer
+                    example: 10
+                min_purchase_amount:
+                    type: integer
+                    example: 50000
+                max_purchase_amount:
+                    type: integer
+                    example: 100000
+                usage_limit:
+                    type: integer
+                    example: 1
+                start_date:
+                    type: string
+                    format: datetime
+                    example: 2020-01-01 00:00:00
+                    description: "Creation timestamp in UTC"
+                expiry_date:
+                    type: string
+                    format: datetime
+                    example: 2020-01-01 00:00:00
+                    description: "Creation timestamp in UTC"
+                is_active:
+                    type: integer
+                    enum: [0, 1]
+                    example: 1
+                created_at:
+                    type: string
+                    format: datetime
+                    example: 2020-01-01 00:00:00
+                    description: "Creation timestamp in UTC"
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Unauthorized
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

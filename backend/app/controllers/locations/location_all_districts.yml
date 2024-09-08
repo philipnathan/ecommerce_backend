@@ -1,0 +1,32 @@
+tags:
+    - Locations
+summary: Get all districts
+description: Get all districts
+parameters:
+    - in: query
+      name: prov_id
+      schema:
+          type: integer
+          example: 1
+      required: false
+responses:
+    200:
+        description: Successfully get districts
+        schema:
+            type: array
+            items:
+                type: object
+                properties:
+                    id:
+                        type: integer
+                    province_id:
+                        type: integer
+                    district:
+                        type: string
+    500:
+        description: Internal Server Error
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string

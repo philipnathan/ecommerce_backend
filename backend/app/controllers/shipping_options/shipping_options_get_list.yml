@@ -1,0 +1,52 @@
+tags:
+    - Shipping Options
+summary: Create new shipping option for seller
+description: Create new shipping option for seller
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+responses:
+    200:
+        description: Successfully return shipping options
+        schema:
+            type: array
+            items:
+                tpye: object
+                properties:
+                    id:
+                        type: integer
+                        example: 1
+                    is_active:
+                        type: integer
+                        example: 1
+                    seller_id:
+                        type: integer
+                        example: 1
+                    shipment_id:
+                        type: integer
+                        example: 1
+                    shipment_name:
+                        type: string
+                        example: "jne"
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Vendor jnee not found
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

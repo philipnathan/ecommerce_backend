@@ -1,0 +1,102 @@
+tags:
+    - Calculators
+summary: Shipment Options
+description: Find available shipment options
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - name: request
+      in: body
+      required: true
+      schema:
+          type: object
+          properties:
+              seller_id:
+                  type: integer
+                  example: 1
+              user_selected_address_id:
+                  type: integer
+                  example: 1
+              total_weight_gram:
+                  type: integer
+                  example: 2
+responses:
+    200:
+        description: Successful response with calculated product details
+        schema:
+            type: object
+            properties:
+                jne:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            cost:
+                                type: integer
+                                example: 25000
+                            description:
+                                type: string
+                                example: "JNE City Courier"
+                            etd:
+                                type: string
+                                example: "1-2"
+                            service:
+                                type: string
+                                example: "REG"
+                pos:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            cost:
+                                type: integer
+                                example: 25000
+                            description:
+                                type: string
+                                example: "Pos Reguler"
+                            etd:
+                                type: string
+                                example: "2 HARI"
+                            service:
+                                type: string
+                                example: "Pos Reguler"
+                tiki:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            cost:
+                                type: integer
+                                example: 25000
+                            description:
+                                type: string
+                                example: "Reguler Service"
+                            etd:
+                                type: integer
+                                example: 2
+                            service:
+                                type: string
+                                example: "REG"
+
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Seller address not found
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

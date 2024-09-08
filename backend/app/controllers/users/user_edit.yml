@@ -1,0 +1,52 @@
+tags:
+    - Users
+summary: Update profile.
+description: Allows user to update their email or password.
+
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+      description: JWT Token
+    - name: request
+      in: body
+      required: true
+      schema:
+          type: object
+          properties:
+              request_type:
+                  type: string
+                  enum: ["change_email", "change_password"]
+                  example: change_email / change_password
+              password:
+                  type: string
+                  format: password
+              new_email:
+                  type: string
+                  format: email
+              new_password:
+                  type: string
+                  format: password
+responses:
+    200:
+        description: Email changed successfully
+    400:
+        description: Incorrect user input
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Incorrect Password
+    401:
+        description: UNAUTHORIZED
+    500:
+        description: Something wrong with the database
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database

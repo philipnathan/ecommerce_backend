@@ -1,0 +1,49 @@
+tags:
+    - Sellers
+summary: Create seller
+description: Create new seller.
+parameters:
+    - name: request
+      in: body
+      required: true
+      schema:
+          type: object
+          properties:
+              store_name:
+                  type: string
+                  example: Nathan shop
+              email:
+                  type: string
+                  format: email
+                  example: email@email.com
+              phone_number:
+                  type: string
+                  example: 6282122223333
+              password:
+                  type: string
+                  example: password
+responses:
+    200:
+        description: Successfully Registered
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Seller registered successfully.
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Email already exists.
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

@@ -1,0 +1,56 @@
+tags:
+    - Shipping Options
+summary: Update existed shipping option for seller
+description: Update existed shipping option for seller
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - in: body
+      name: Shipping Option
+      required: true
+      schema:
+          tpye: object
+          properties:
+              shipment_status:
+                  type: object
+                  properties:
+                      jne:
+                          type: integer
+                          example: 1
+                      tiki:
+                          type: integer
+                          example: 1
+                      pos:
+                          type: integer
+                          example: 1
+responses:
+    200:
+        description: Shipping option created successfully
+        schema:
+            type: object
+            properties:
+                message:
+                    type: string
+                    example: Options created/updated successfully
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Vendor jnee not found
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.

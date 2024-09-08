@@ -1,0 +1,147 @@
+tags:
+    - Calculators
+summary: Calculate Cart
+description: Calculate multiple items from multiple sellers with voucher
+parameters:
+    - in: header
+      name: Authorization
+      schema:
+          type: string
+          format: JWT
+          example: Bearer <JWT>
+      description: JWT Token
+      required: true
+    - name: request
+      in: body
+      required: true
+      schema:
+          type: object
+          properties:
+              carts:
+                  type: array
+                  items:
+                      type: object
+                      properties:
+                          product_id:
+                              type: integer
+                              example: 1
+                          quantity:
+                              type: integer
+                              example: 1
+                      type: object
+                      properties:
+                          product_id:
+                              type: integer
+                              example: 2
+                          quantity:
+                              type: integer
+                              example: 2
+              selected_user_voucher_ids:
+                  type: array
+                  items:
+                      type: integer
+                      example: 1, 2, 3
+              user_selected_address_id:
+                  type: integer
+                  example: 1
+              selected_courier:
+                  type: array
+                  items:
+                      type: object
+                      properties:
+                          seller_id:
+                              type: integer
+                              example: 1
+                          selected_courier:
+                              type: string
+                              example: "jne"
+                          selected_service:
+                              type: string
+                              example: "REG"
+responses:
+    200:
+        description: Successful response with calculated product details
+        schema:
+            type: object
+            properties:
+                final_price:
+                    type: integer
+                    example: 10000
+                items:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            detail_product:
+                                type: object
+                                properties:
+                                    category_id:
+                                        type: integer
+                                        example: 1
+                                    id:
+                                        type: integer
+                                        example: 17
+                                    image_url:
+                                        type: string
+                                        example: "www.google.com"
+                                    is_active:
+                                        type: integer
+                                        example: 1
+                                    name:
+                                        type: string
+                                        example: "Sepeda"
+                                    price:
+                                        type: integer
+                                        example: 1000000
+                                    product_type:
+                                        type: integer
+                                        example: 1
+                                    volume_m3:
+                                        type: string
+                                        example: "0.0010000000"
+                                    weight_kg:
+                                        type: string
+                                        example: "0.5000000000"
+                                quantity:
+                                    type: integer
+                                    example: 2
+                                sub_total:
+                                    type: integer
+                                    example: 2000000
+                                sub_volume:
+                                    type: string
+                                    example: "0.0020000000"
+                                sub_volume_to_weight:
+                                    type: string
+                                    example: "0.2000000000"
+                                sub_weight:
+                                    type: string
+                                    example: "1.0000000000"
+                shipment_fee:
+                    type: integer
+                    example: 24000
+                total_discount:
+                    type: integer
+                    example: 8000
+                total_price_before_shipment:
+                    type: integer
+                    example: 2000100
+                total_weight_gram:
+                    type: string
+                    example: "1500.0000000000"
+    400:
+        description: Failed to pass validation process
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Unauthorized
+    500:
+        description: Something wrong with the database.
+        schema:
+            type: object
+            properties:
+                error:
+                    type: string
+                    example: Cannot connect to the database.
