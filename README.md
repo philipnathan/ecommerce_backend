@@ -13,7 +13,9 @@ This project is a comprehensive end-to-end backend solution for an e-commerce pl
 ## Technology Stack
 
 -   **Backend**: Flask
--   **Databases**: MySQL (local) & MongoDB (local)
+-   **Databases**:
+    -   **MySQL** for relational data
+    -   **MongoDB** for non-relational data
 -   **Third-Party Integrations**:
     -   **RajaOngkir**: API for real-time shipping options and cost calculations.
     -   **Meilisearch**: Search engine for fast and efficient product searches.
@@ -27,9 +29,13 @@ This project uses and MVC-based architecture with a clear seperation between:
 -   Service: Handle business logic
 -   Repository: Manages database interactions
 
+## Database Structure
+
+Here's Entity Relationship Diagram ([ERD](https://drive.google.com/file/d/1ldPiQ7cMJ5hv38xJ_dnrZrNk9BPiYPUh/view?usp=sharing)) of our database structure - **(Please zoom in to see the image more clearly.)**
+
 ## API Documentation
 
-Full API documentation is available at localhost/apidocs once the server is running. The documentation is generated using Flasgger.
+Full API documentation is available at http://localhost/apidocs once the server is running. The documentation is generated using Flasgger.
 
 ## Project Limitations
 
