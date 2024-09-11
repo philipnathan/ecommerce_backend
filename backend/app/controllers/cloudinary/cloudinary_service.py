@@ -11,7 +11,9 @@ class CloudinaryService:
     def compress_image(image_data, quality=85):
         img = Image.open(image_data)
         buffer = io.BytesIO()
-        img.save(buffer, format="JPEG", quality=quality)
+
+        image_format = img.format if img.format in ["JPEG", "PNG"] else "JPEG"
+        img.save(buffer, format=image_format, quality=quality)
         buffer.seek(0)
         return buffer
 
