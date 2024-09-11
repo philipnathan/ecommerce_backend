@@ -21,7 +21,7 @@ parameters:
                   example: email
               phone_number:
                   type: string
-                  example: 6282122223333
+                  example: "6282122223333"
               password:
                   type: string
                   example: password
