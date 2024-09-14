@@ -27,11 +27,31 @@ Full API documentation is available at [API Docs](http://13.250.112.106/apidocs/
 
 ## Project Architecture
 
-This project uses and MVC-based architecture with a clear seperation between:
+This project implements a layered architecture, inspired by clean architecture principles, with a clear separation of concerns:
 
--   Controller: Manages endpoint logic
--   Service: Handle business logic
--   Repository: Manages database interactions
+### Layers:
+
+1. **Controller Layer:**
+
+    - Manages HTTP request handling and response formation
+    - Passes request data and authentication information to the Service layer
+
+2. **Service Layer:**
+
+    - Implements core business logic and rules
+    - Orchestrates the use of one or more repositories
+    - Performs data transformations and complex operations
+
+3. **Repository Layer:**
+    - Manages direct interactions with the database
+    - Impelements database operations (e.g., create, find, update, and, delete)
+
+This architecture promotes:
+
+-   Clear separation of responsibilities
+-   Testability of individual components
+-   Flexibility to change implementation details
+-   Scalability for complex business logic
 
 ## Database Structure
 
