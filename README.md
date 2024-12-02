@@ -4,7 +4,7 @@ This project is a comprehensive end-to-end backend solution for an e-commerce pl
 
 ## API Documentation
 
-Full API documentation is available at [API Docs](http://13.250.112.106/apidocs/). The documentation is generated using Flasgger.
+Full API documentation is available at [API Docs](http://13.250.107.176/apidocs/). The documentation is generated using Flasgger.
 
 ## Key Features
 
